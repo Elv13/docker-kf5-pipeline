@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Copyright 2013-2017 by Emmanuel Lepage Vallee
+# The file is provided as-is with no warrenty, use at your own risk.
+# Can cause cancer and an avalanche of ninjas or events I can't imagine.
+
 UBUNTU_VERSION="xenial"
 IMAGEPATH="/var/chroot/"
 IMAGENAME=${UBUNTU_VERSION}_intergration.img

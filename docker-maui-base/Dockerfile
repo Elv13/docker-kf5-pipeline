@@ -61,4 +61,4 @@ WORKDIR /
 RUN apt update
 RUN apt upgrade -y
 
-RUN rm -rf /packages /sources
+CMD cp /packages/*.deb /exportdebs/

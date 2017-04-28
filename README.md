@@ -10,7 +10,9 @@ related to developing a KF5 or Qt5 application:
  * Compile with Clazy, clang and scan-build
  * Compile with Coverity (TM)
  * Run tests using a fake X11 server
- * Generate bootable virtual machines using the packages
+ * Generate bootable virtual machines using the packages (WIP)
+ * Keep an apt repository updated
+ * Expose an apt repository over http
 
 It generates the following artifacts:
 
@@ -39,15 +41,25 @@ It generates the following artifacts:
         --build-arg token=${COV_TOKEN} \
         --build-arg project=${PROJECT} --build-arg email=${EMAIL} \
         --build-arg version=${VERSION}
-    docker docker-kf5-clazy-scanbuild -t elv13/kf5-project-clazy-scanbuild
-    docker docker-kf5-dotdeb -t elv13/kf5-project-dotdeb
+    docker build docker-kf5-clazy-scanbuild -t elv13/kf5-project-clazy-scanbuild
+    docker build docker-kf5-dotdeb -t elv13/kf5-project-dotdeb
+    docker build docker-apt-repository/ -t elv13/apt-repository
+    docker build docker-apt-httpd/ -t elv13/apt-httpd
 
     # Run them
     docker run -it elv13/kf5-project-clazy-scanbuild
     docker run -it elv13/kf5-project-coverity
     docker run -it -v $PWD/debs:/exportdebs/ elv13/kf5-project-dotdeb
+    docker run -v $PWD/debs:/public/ elv13/apt-repository
+    docker run -p80:80 -p443:443 -v $PWD/debs:/var/www/html/ elv13/apt-httpd
 
     # Remember to add some cron jobs to rebuild the image every weeks
+
+## Unfinished
+
+There is a partially working docker based vm generator. It create a netrunner
+image, but its misisng the MBR and I don't want to waste anymore time doing
+what oVirt has built-in.
 
 ## Note
 

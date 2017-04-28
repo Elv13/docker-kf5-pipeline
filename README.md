@@ -47,6 +47,7 @@ It generates the following artifacts:
     docker build docker-apt-httpd/ -t elv13/apt-httpd
 
     # Run them
+    docker run -it -v $PWD/debs:/public/ elv13/maui-base
     docker run -it elv13/kf5-project-clazy-scanbuild
     docker run -it elv13/kf5-project-coverity
     docker run -it -v $PWD/debs:/exportdebs/ elv13/kf5-project-dotdeb

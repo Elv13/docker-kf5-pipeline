@@ -35,7 +35,7 @@ It generates the following artifacts:
     # Build the containers
     docker build docker-maui-base/ -t elv13/maui-base
     # Copy the "debian" directory into $PWD/kf5-project-builder
-    docker buils docker-kf5-build-env/ -t elv13/kf5-project-builder \
+    docker build docker-kf5-build-env/ -t elv13/kf5-project-builder \
         --build-arg project=${PROJECT} --build-arg branch=${BRANCH}
     docker build docker-kf5-coverity -t elv13/kf5-project-coverity \
         --build-arg token=${COV_TOKEN} \

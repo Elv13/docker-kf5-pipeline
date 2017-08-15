@@ -10,7 +10,6 @@ CMD git pull --rebase && \
  VERSION=$(dpkg-parsechangelog --show-field Version | cut -d: -f2);\
  VERSION=$(echo $VERSION | cut -f1 -d\-);\
  PROJECT=$(dpkg-parsechangelog --show-field Source);\
- echo ICI ${PROJECT}_${VERSION}.orig.tar.bz2;\
  tar -cj . -f ../../../${PROJECT}_${VERSION}.orig.tar.bz2 && \
  dpkg-buildpackage -j9 && \
  chmod 755 /*.deb && \

@@ -3,7 +3,7 @@
 # as long as both the builder image and this are rebuilt
 # using another `FROM`
 
-FROM elv13/kf5-project-builder
+FROM elv13/kf5-build-env
 MAINTAINER Emmanuel Lepage-Vallee (elv1313@gmail.com)
 
 CMD git pull --rebase && \

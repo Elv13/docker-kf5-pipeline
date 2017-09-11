@@ -4,9 +4,14 @@
 FROM elv13/kf5-instrument
 MAINTAINER Emmanuel Lepage-Vallee (elv1313@gmail.com)
 
-RUN mkdir /warnings
+ARG email
 
-CMD git pull --rebase && \
- mkdir build; cd build; \
- cmake ..&&\
- scan-build warningdb /warnings/clazy.json
+RUN mkdir /patches
+
+RUN git config --global user.email ${email}
+RUN git config --global user.name "KF5 linting bot"
+
+
+ADD scripts/fixall.sh /usr/bin/
+
+CMD fixall.sh

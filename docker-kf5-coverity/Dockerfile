@@ -1,6 +1,6 @@
 # Upload results to Coverity (tm) for static analysis
 
-FROM elv13/kf5-project-builder
+FROM elv13/kf5-build-env
 MAINTAINER Emmanuel Lepage-Vallee (elv1313@gmail.com)
 
 ARG token

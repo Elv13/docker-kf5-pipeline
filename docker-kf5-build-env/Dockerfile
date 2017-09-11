@@ -27,6 +27,9 @@ RUN echo ${project} > /projectname.txt
 
 ADD debian /${project}/debian
 
+# If an image based on this one uses make or ninja on the project, it should
+# use this wrapper.
+ADD scripts/warningdb /usr/bin/
 # Install all dependencies
 RUN mk-build-deps \
     -t 'apt-get -o Debug::pkgProblemResolver=yes --no-install-recommends -qqy' \
